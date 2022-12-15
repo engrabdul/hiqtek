@@ -1,47 +1,55 @@
 import React, { useState } from 'react';
 import './style/Todo.css';
 
+let globalID = 0
+
 export default function Todo() {
 
     const [task, setTask] = useState("")
-    const [todos, setTodos] = useState([
-        "Afeez",
-        "Tunde",
-        "Abidemi"
-    ])
+    const [todos, setTodos] = useState([])
 
-    function createTodo() {
+    function createTodo(event) {
+        event.preventDefault()
         //console.log(`Task value ${task}`)
         setTodos(oldTodos => {
             setTask('')
-            return [...oldTodos, task]
+            return [...oldTodos, { todo: task, id: globalID++ }]
         })
 
     }
 
-    function tryToCheckForEnterKey(e) {
-        //console.log('Event', e)
-        if(e.keyCode === 13) {
-            createTodo()
-        }
+    function deleteItem(itemID) {
+        setTodos(oldTodos => oldTodos.filter(item => item.id !== itemID))
     }
+
+    // function tryToCheckForEnterKey(e) {
+    //     //console.log('Event', e)
+    //     if(e.keyCode === 13) {
+    //         createTodo()
+    //     }
+    // }
 
     return (
       <div id="content">
-        <input 
-            onKeyDown={tryToCheckForEnterKey}
-            type="text" 
-            value={task} 
-            onChange={event => {
-                setTask(event.target.value)
-            }}
-        />
-        <p>
-            <button onClick={createTodo} > Create Todo </button>
-        </p>
+        <form onSubmit={createTodo}>
+            <input 
+                //onKeyDown={tryToCheckForEnterKey}
+                type="text" 
+                value={task} 
+                onChange={event => {
+                    setTask(event.target.value)
+                }}
+            />
+            <p>
+                <button type="submit" > Create Todo </button>
+            </p>
+        </form>
+        
         <ul>
-            {todos.map(todo => {
-                return <li>{todo}</li>
+            {todos.map((item, index) => {
+                return <li key={item.id}>{item.todo}&nbsp;&nbsp;
+                <button onClick={() => deleteItem(item.id)}>Delete</button>
+                </li>
             })}
         </ul>
       </div>
