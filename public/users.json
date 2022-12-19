@@ -1,0 +1,16 @@
+{
+    "afeez": {
+        "name": "Afeez",
+        "age": 24
+    },
+
+    "tunde": {
+        "name": "Babatunde",
+        "age": 27
+    },
+
+    "bidemi": {
+        "name": "Abidemi",
+        "age": 20
+    }
+}

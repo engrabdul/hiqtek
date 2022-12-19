@@ -1,7 +1,5 @@
 import React from 'react'
 
-const amIabove18 = false
-
 export default function Header() {
   return (
     <header>

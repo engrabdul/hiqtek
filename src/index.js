@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import abc, { add, sub } from './calculator.js';
+// import abc, { add, sub } from './calculator.js';
 import './index.css';
 import App from './App';
+import { useParams } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
