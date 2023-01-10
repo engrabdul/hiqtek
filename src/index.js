@@ -7,9 +7,7 @@ import { useParams } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
-
-const client = new QueryClient()
-
+import client from './react-query-client';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
